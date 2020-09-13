@@ -3,13 +3,13 @@
     <name>TUTORMAQ</name>
     <description>
 		Neste aplicativo você vai encontrar os tutoriais em vídeos de como operar as máquinas Norimaq e os manuais em PDF.    
-	</description>
+    </description>
     <author email="suporte@skynetsites.com.br" href="https://skynetsites.com.br">
         skynet Sites
     </author>
     <content src="index.html" />
     <preference name="phonegap-version" value="cli-9.0.0" />
-	<preference name="AppName" value="TUTORMAQ" />
+    <preference name="AppName" value="TUTORMAQ" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="android-minSdkVersion" value="14" />
     <plugin name="cordova-plugin-battery-status" source="npm" spec="~1.2.4" />

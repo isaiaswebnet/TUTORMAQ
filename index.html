@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>TUTORMAQ</title>
+	<script type="text/javascript" charset="utf-8">
+	 
+         function onLoad() {
+	     document.addEventListener("online", onOnline, false);
+             document.addEventListener("offline", onOffline, false);
+             document.addEventListener("deviceready", onDeviceReady, false);
+         }
+         
+         function onDeviceReady() {
+             console.log("onDeviceReady");
+             console.log(navigator.notification);
+         }
+         
+         function onOnline() {
+             console.log("onOnline");
+             ref = cordova.InAppBrowser.open('https://wodan.com.br/tutormaq/', '_blank', 'location=no');
+             ref.addEventListener("exit", function(event) {navigator.notification.confirm('Você deseja sair do aplicativo?', onBackButton, 'Fique Conosco', ['NÃO','SIM']); }, false);
+             if(ref) {
+             	document.getElementById("loader-wrapper").style.display = "none";
+             }
+         }
+         
+         function onOffline() {
+             console.log("onOffline");
+             navigator.notification.alert('Sinto muito, parece haver um problema de rede.', onBackButton2, 'Sem Internet', 'SAIR');
+         }
+         
+         function onBackButton(e) {
+             if(e==2){
+             	navigator.app.exitApp();
+             }else{
+             	onOnline();
+             }
+         }
+         
+         function onBackButton2() {
+             navigator.app.exitApp();
+         }
+      </script>
+   </head>
+<body onload="onLoad()">
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript">
+        app.initialize();
+    </script>
+</body>
+</html>

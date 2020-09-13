@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="br.com.skynetsites.tutormaq" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>TUTORMAQ</name>
+    <name>TutorMaq</name>
     <description>
 	Neste aplicativo você vai encontrar os tutoriais em vídeos de como operar as máquinas Norimaq e os manuais em PDF.    
     </description>
@@ -9,7 +9,7 @@
     </author>
     <content src="index.html" />
     <preference name="phonegap-version" value="cli-9.0.0" />
-    <preference name="AppName" value="TUTORMAQ" />
+    <preference name="AppName" value="TutorMaq" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="android-minSdkVersion" value="19" />
     <preference name="Orientation" value="portrait" />

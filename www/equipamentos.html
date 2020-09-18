@@ -59,7 +59,7 @@ function onDeviceReady() {
 				    output += '<div class="post_right_reveal" style="height:30px;background-color: #d8d8d8;">';
 				    output += '<a style="padding:0 10px;line-height: 30px;font-size: 13px;font-weight: 600;">MODELOS</a>';
 				    output += '</div>';
-					output += '</li>';
+				    output += '</li>';
 
 		    
 		    $.each(response,function(index,object){
@@ -72,7 +72,7 @@ function onDeviceReady() {
 				    output += '<div class="post_right_reveal">';
 				    output += '<h4><a href="#">' + object.title.rendered + '</a></h4>';
 				    output += '</div>';
-					output += '</li>';
+				    output += '</li>';
 
 		    });
 		    
@@ -120,7 +120,8 @@ function onDeviceReady() {
         })
         .done(function(response) {
 
-            var header = '', footer = '';
+            var header = '', 
+		footer = '';
 			
 			header += '<div class="gohome"><a href="#" id="homebutton" onclick="window.open(document.referrer,\'_self\');"><i class="fa fa-chevron-circle-left fa-2x"></i></a></div>';
 			header += '<div class="gologo"><a href="home.html" id="contactbutton"><img src="' + response.acf.logo2 + '" /></a></div>';

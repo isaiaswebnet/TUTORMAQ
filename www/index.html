@@ -1,50 +1,25 @@
-<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <title>TutorMaq</title>
-	<script type="text/javascript" charset="utf-8">
-	 
-         function onLoad() {
-	     document.addEventListener("online", onOnline, false);
-             document.addEventListener("offline", onOffline, false);
-             document.addEventListener("deviceready", onDeviceReady, false);
-         }
-         
-         function onDeviceReady() {
-             console.log("onDeviceReady");
-             console.log(navigator.notification);
-         }
-         
-         function onOnline() {
-             console.log("onOnline");
-             ref = cordova.InAppBrowser.open('https://wodan.com.br/tutormaq/', '_blank', 'location=no');
-             ref.addEventListener("exit", function(event) {navigator.notification.confirm('Você deseja sair do aplicativo?', onBackButton, 'Fique Conosco', ['NÃO','SIM']); }, false);
-             if(ref) {
-             	document.getElementById("loader-wrapper").style.display = "none";
-             }
-         }
-         
-         function onOffline() {
-             console.log("onOffline");
-             navigator.notification.alert('Sinto muito, parece haver um problema de rede.', onBackButton2, 'Sem Internet', 'SAIR');
-         }
-         
-         function onBackButton(e) {
-             if(e==2){
-             	navigator.app.exitApp();
-             }else{
-             	onOnline();
-             }
-         }
-         
-         function onBackButton2() {
-             navigator.app.exitApp();
-         }
-      </script>
-   </head>
-<body onload="onLoad()">
-    <script type="text/javascript" src="cordova.js"></script>
+<title>TutorMaq</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+<script type="text/javascript" charset="utf-8" src="jquery/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="jquery/jquery.mobile-1.4.5.min.js"></script>
+<link rel="stylesheet" type="text/css" href="jquery/jquery.mobile-1.4.5.min.css"/>
+<style>*{margin:0;padding:0}div{border-width:0!important}#loader{position:fixed;top:0;left:0;background:url(splash.jpg) no-repeat center center;background-attachment:fixed;-webkit-background-size:100%;-moz-background-size: 100%;-o-background-size: 100%;background-size: 100%;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;width:100%;height:100%;z-index:1000;}</style>
+<script type="text/javascript" charset="utf-8">
+document.addEventListener("deviceready", onDeviceReady, false);
+function onDeviceReady() {
+setTimeout(function(){ 
+$('html').fadeOut('slow', function() {
+window.location.href = "home.html";
+});
+}, 4000);
+}
+</script>
+</head>
+<body>
+<div id="loader"></div>
 </body>
 </html>

@@ -10,7 +10,7 @@
 <link type="text/css" rel="stylesheet" href="css/style.css"/>
 <link type="text/css" rel="stylesheet" href="css/tutormaq.css"/>
 <link type="text/css" rel="stylesheet" href="css/all.min.css"/>
-<link href='//fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'/>
+<link href='https://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'/>
 <script type="text/javascript" charset="utf-8">
 document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
@@ -20,7 +20,7 @@ function onDeviceReady() {
 
     $.ajax({
             dataType: 'json',
-            url: '//www.norimaq.com.br/tutormaq/wp-json/wp/v2/modelo_equipamento',
+            url: 'https://www.norimaq.com.br/tutormaq/wp-json/wp/v2/modelo_equipamento',
         })
         .done(function(response) {
 
@@ -40,7 +40,7 @@ function onDeviceReady() {
 
     $.ajax({
             dataType: 'json',
-            url: '//www.norimaq.com.br/tutormaq/wp-json/acf/v3/options/configuracoes/',
+            url: 'https://www.norimaq.com.br/tutormaq/wp-json/acf/v3/options/configuracoes/',
         })
         .done(function(response) {
 

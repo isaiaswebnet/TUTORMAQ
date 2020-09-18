@@ -1,0 +1,130 @@
+<html>
+<head>
+<title>TutorMaq</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+<script type="text/javascript" charset="utf-8" src="jquery/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="jquery/jquery.mobile-1.4.5.min.js"></script>
+<script type="text/javascript" src="js/jquery.validate.min.js"></script>
+<link rel="stylesheet" type="text/css" href="jquery/jquery.mobile-1.4.5.min.css"/>
+<link type="text/css" rel="stylesheet" href="css/style.css"/>
+<link type="text/css" rel="stylesheet" href="css/tutormaq.css"/>
+<link type="text/css" rel="stylesheet" href="css/all.min.css"/>
+<link href='https://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'/>
+<script type="text/javascript" charset="utf-8">
+document.addEventListener("deviceready", onDeviceReady, false);
+function onDeviceReady() {
+    setTimeout(function() {
+        $('#preloader').fadeOut('slow');
+    }, 5000);
+
+    $.ajax({
+            dataType: 'json',
+            url: 'https://www.norimaq.com.br/tutormaq/wp-json/acf/v3/options/configuracoes/',
+        })
+        .done(function(response) {
+
+            var header = '',
+                footer = '';
+
+            header += '<div class="gohome"><a href="#" id="homebutton" onclick="window.open(document.referrer,\'_self\');"><i class="fa fa-chevron-circle-left fa-2x"></i></a></div>';
+            header += '<div class="gologo"><a href="home.html" id="contactbutton"><img src="' + response.acf.logo2 + '" /></a></div>';
+            header += '<div class="gomenu"><a href="informacoes.html" id="contactbutton"><i class="fa fa-info-circle fa-2x"></i></a></div>';
+
+            footer += '<div class="gohome"><a href="home.html"><i class="fa fa-home fa-2x"></i></a></div>';
+            footer += '<div class="gohome"><a href="equipamentos.html"><i class="fa fa-video fa-2x"></i></a></div>';
+            footer += '<div class="gohome"><a href="equipamentos.html"><i class="fa fa-file-pdf fa-2x"></i></a></div>';
+            footer += '<div class="gohome"><a href="contato.html"><i class="fa fa-envelope fa-2x"></i></a></div>';
+
+            $('#header').append(header).css("background-color", response.acf.cor);
+            $('#footer').append(footer).css("background-color", response.acf.cor2);
+            $('ul.posts a').css("color", response.acf.cor);
+            $('.toogle_wrap_blog').css("background-color", response.acf.cor);
+            //$('[name=to]').val(response.acf.email);
+            $('[name=to]').val('isaiaswebnet@gmail.com');
+
+        });
+
+    $("#CommentForm").validate({
+        submitHandler: function(form) {
+            var $ = jQuery;
+            $('#loader').fadeIn();
+            var formData = $(form).serialize(),
+                note = $('#Note');
+            $.ajax({
+                type: "POST",
+                url: "enviar.php",
+                data: formData,
+                success: function(response) {
+                    if (note.height()) {
+                        note.fadeIn('fast', function() {
+                            $(this).hide();
+                        });
+                    } else {
+                        note.hide();
+                    }
+                    $('#LoadingGraphic').fadeOut('fast', function() {
+                        if (response === 'success') {
+                            $('#formtitle').hide();
+                        }
+                        result = '';
+                        c = '';
+                        if (response === 'success') {
+                            result = 'Sua mensagem foi enviada. Obrigado!';
+                            c = 'success';
+                        } else {
+                            result = response;
+                            c = 'error';
+                        }
+                        note.removeClass('success').removeClass('error').text('');
+                        var i = setInterval(function() {
+                            if (!note.is(':visible')) {
+                                note.html(result).addClass(c).slideDown('fast');
+                                clearInterval(i);
+                            }
+                        }, 40);
+                    });
+                }
+            });
+            return false;
+        }
+    });
+</script>
+</head>
+<body>
+    <div id="preloader"></div>
+    <div id="wrapper">
+      <div id="content">
+        <div id="header">
+        </div>
+        <div class="sliderbg">
+          <div class="pages_container">
+           <div class="posts_archive_page">
+            <h2 class="page_title">Entre em contato</h2>
+            <h2 id="Note"></h2>
+            <div class="form">
+              <form class="cmxform" id="CommentForm" method="post" action="">
+                <label>Nome:</label>
+                <input type="text" name="ContactName" id="ContactName" value="" class="form_input radius4 required" />
+                <label>E-mail:</label>
+                <input type="text" name="ContactEmail" id="ContactEmail" value="" class="form_input radius4 required email" />
+                <label>Telefone:</label>
+                <input type="tel" name="ContactPhone" id="ContactPhone" value="" class="form_input radius4 required phone" />
+                <label>Mensagem:</label>
+                <textarea name="ContactComment" id="ContactComment" class="form_textarea radius4 textarea required" rows="" cols=""></textarea>
+                <input type="submit" name="submit" class="form_submit radius4 green green_borderbottom" id="submit" value="Enviar" />
+                <input class="" type="hidden" name="to" />
+                <input class="" type="hidden" name="subject" value="Mensagem do formulário de contato" />
+                <label id="loader" style="display:none;"><img src="images/loader.gif" alt="Carregando..." id="LoadingGraphic" /></label>
+              </form>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div id="footer">
+        </div>
+      </div>
+    </div>
+</body>
+</html>

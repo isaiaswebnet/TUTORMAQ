@@ -1,1 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>TutorMaq</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+<script type="text/javascript" charset="utf-8" src="jquery/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="jquery/jquery.mobile-1.4.5.min.js"></script>
+<link rel="stylesheet" type="text/css" href="jquery/jquery.mobile-1.4.5.min.css"/>
+<link type="text/css" rel="stylesheet" href="css/style.css"/>
+<link type="text/css" rel="stylesheet" href="css/tutormaq.css"/>
+<link type="text/css" rel="stylesheet" href="css/all.min.css"/>
+<link href='//fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'/>
+<script type="text/javascript" charset="utf-8">
+document.addEventListener("deviceready", onDeviceReady, false);
+function onDeviceReady() {
+    setTimeout(function() {
+        $('#preloader').fadeOut('slow');
+    }, 5000);
 
+    $.ajax({
+            dataType: 'json',
+            url: '//www.norimaq.com.br/tutormaq/wp-json/wp/v2/modelo_equipamento',
+        })
+        .done(function(response) {
+
+            var output = '';
+
+            output += '<ul>';
+
+            $.each(response, function(index, object) {
+
+                output += '<li><a href="equipamentos.html?id=' + object.id + '" title="' + object.name + ' " class="insidelink"><img src="' + object.acf.imagem + '" /><span>' + object.name + '</span></a></li>';
+            });
+            output += '</ul>';
+
+            $('#menu').append(output);
+
+        });
+
+    $.ajax({
+            dataType: 'json',
+            url: '//www.norimaq.com.br/tutormaq/wp-json/acf/v3/options/configuracoes/',
+        })
+        .done(function(response) {
+
+            var logo = '',
+                logo2 = '',
+                fundo = '',
+                footer = '';
+
+            logo += '<img src="' + response.acf.logo + '" border="0" />';
+            logo2 += '<a href="home.html"><img src="' + response.acf.logo2 + '" border="0" /></a>';
+
+            footer += '<div class="gohome"><a href="home.html"><i class="fa fa-home fa-2x"></i></a></div>';
+            footer += '<div class="gohome"><a href="equipamentos.html"><i class="fa fa-video fa-2x"></i></a></div>';
+            footer += '<div class="gohome"><a href="equipamentos.html"><i class="fa fa-file-pdf fa-2x"></i></a></div>';
+            footer += '<div class="gohome"><a href="contato.html"><i class="fa fa-envelope fa-2x"></i></a></div>';
+
+            $('.logo').append(logo2);
+            $('.logo2').append(logo);
+            $(".sliderbg_menu").css({
+                "background-image": "url('" + response.acf.fundo + "')",
+                "background-color": response.acf.cor,
+                "background-color": "linear-gradient(90deg, " + response.acf.cor2 + " 0%, " + response.acf.cor + " 35%, " + response.acf.cor + " 100%)"
+            });
+            $('#footer').append(footer).css("background-color", response.acf.cor2);
+
+});
+}
+</script>
+<div id="preloader"></div>
+<div id="wrapper">
+<div id="content">
+<div class="sliderbg_menu">
+<div class="logo"></div>
+<nav id="menu">
+</nav>
+<div class="clear"></div>
+</div>
+<div id="footer">
+</div>
+</div>
+</div>
+<div class="logo2"></div>
+<div class="versao">versão 1.0</div>
+</body>
+</html>

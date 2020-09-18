@@ -78,7 +78,7 @@ iframe{width:100%!important;height:100%!important;}
 .video div{height:25vh;}
 .mazoom, .mezoom, .print{position:absolute;right:10px;bottom:15px;width:40px;height:40px;text-align:center;color:#fff;font-size:10px;line-height:58px;font-weight:100;}
 .mezoom{display:none;z-index:9999999;}
-.print {right:15px;bottom:none;top:5px;z-index:9999999;}
+.print {right:8px;bottom:none;top:5px;z-index:9999999;}
 @media all and (orientation:portrait) {
 .logo{padding:40px 0 25px;}
 .logo2{bottom:90px;}

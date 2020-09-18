@@ -52,7 +52,7 @@ function onDeviceReady() {
                 note = $('#Note');
             $.ajax({
                 type: "POST",
-                url: "enviar.php",
+                url: "https://www.norimaq.com.br/tutormaq/app/enviar.php",
                 data: formData,
                 success: function(response) {
                     if (note.height()) {

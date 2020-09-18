@@ -12,6 +12,10 @@
 <script type="text/javascript" charset="utf-8">
 document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
+	
+function openPrint(pdf){
+   var ref = window.open('http://docs.google.com/viewer?url=' + pdf + ', '_system', 'location=yes');
+ }
     setTimeout(function() {
         $('#preloader').fadeOut('slow');
     }, 5000);
@@ -41,7 +45,7 @@ function onDeviceReady() {
 				   output += '<figure id="video' + value + '" class="videocontainer pdf">';
 			     output += '<div>';
 			     output += '<iframe src="https://www.norimaq.com.br/tutormaq/app/pdfview/viewer.html?file=' + object.pdf + '" frameborder="0"></iframe>';
-			     output += '<a class="print" href="' + object.pdf + '"><i class="fa fa-print fa-2x"></i></a>';
+			     output += '<a class="print" href="javascript:;" onclick="openPrint(' + object.pdf + ')"><i class="fa fa-print fa-2x"></i></a>';
 			     output += '<img class="mazoom" src="images/mais-zoom.jpg" onclick="openFull' + value + '()" />';
 			     output += '<img id="mezoom' + value+ '" class="mezoom" src="images/menos-zoom.jpg" onclick="closeFull' + value+ '()" />';
 			     output += '</div>';

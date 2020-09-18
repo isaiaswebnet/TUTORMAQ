@@ -1,25 +1,23 @@
+<!DOCTYPE html>
 <html>
 <head>
 <title>TutorMaq</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
-<script type="text/javascript" charset="utf-8" src="jquery/jquery-3.5.1.min.js"></script>
-<script type="text/javascript" charset="utf-8" src="jquery/jquery.mobile-1.4.5.min.js"></script>
-<link rel="stylesheet" type="text/css" href="jquery/jquery.mobile-1.4.5.min.css"/>
-<style>*{margin:0;padding:0}div{border-width:0!important}#loader{position:fixed;top:0;left:0;background:url(splash.jpg) no-repeat center center;background-attachment:fixed;-webkit-background-size:100%;-moz-background-size: 100%;-o-background-size: 100%;background-size: 100%;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;width:100%;height:100%;z-index:1000;}</style>
+<style>*{margin:0;padding:0}body{position:fixed;top:0;left:0;background:url(splash.jpg) no-repeat center center;background-attachment:fixed;-webkit-background-size:100%;-moz-background-size: 100%;-o-background-size: 100%;background-size: 100%;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;width:100%;height:100%;z-index:1000;}</style>
 <script type="text/javascript" charset="utf-8">
+function onLoad() {
 document.addEventListener("deviceready", onDeviceReady, false);
+}
 function onDeviceReady() {
-setTimeout(function(){ 
-$('html').fadeOut('slow', function() {
-window.location.href = "home.html";
-});
+document.addEventListener("resume", onResume, false);
+}
+function onResume() {
+setTimeout(function() {
+var ref = window.open('home.html', '_self');
 }, 4000);
 }
 </script>
 </head>
-<body>
-<div id="loader"></div>
+<body onload="onLoad()">
 </body>
 </html>

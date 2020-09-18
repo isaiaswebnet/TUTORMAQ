@@ -72,29 +72,13 @@ figcaption {font:140% sans-serif;text-align:left;margin-top:10px;}
 iframe{width:100%!important;height:100%!important;}
 .videocontainer div{position:relative;}
 .fullScreen iframe{position:absolute;top:0;left:0;z-index:999999;}
-.posts_archive_page.pdf{padding:62px 0;height:78%;}
+.posts_archive_page.pdf{padding:62px 0;height:80%;}
 .posts_archive_page.pdf .page_title{padding:0 10px 15px;}
 .videocontainer.pdf,.pdf div{height:100%;margin:0;}
 .video div{height:25vh;}
-.mazoom, .mezoom, .print {
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
-    width: 30px;
-    height: 30px;
-    text-align: center;
-    color: #fff;
-    font-size: 10px;
-    line-height: 48px;
-    font-weight: 100;
-}
+.mazoom, .mezoom, .print{position:absolute;right:10px;bottom:15px;width:40px;height:40px;text-align:center;color:#fff;font-size:10px;line-height:58px;font-weight:100;}
 .mezoom{display:none;z-index:9999999;}
-.print {
-    right: 15px;
-    bottom: none;
-    top: -5px;
-    z-index: 9999999;
-}
+.print {right:15px;bottom:none;top:5px;z-index:9999999;}
 @media all and (orientation:portrait) {
 .logo{padding:40px 0 25px;}
 .logo2{bottom:90px;}

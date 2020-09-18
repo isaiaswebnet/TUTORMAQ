@@ -16,13 +16,8 @@ function onDeviceReady() {
         $('#preloader').fadeOut('slow');
     }, 5000);
 	
- 
 	
-function openPrint(pdf){
-   var ref = window.open("https://docs.google.com/viewer?url=" + pdf, "_system", "location=yes");
- }
-
-    function buildJsonMod(idMod) {
+function buildJsonMod(idMod) {
 
         var jsonMod = 'https://www.norimaq.com.br/tutormaq/wp-json/wp/v2/modelo/';
         if (typeof(idMod) != 'undefined' && idMod != null) {
@@ -47,7 +42,7 @@ function openPrint(pdf){
 				   output += '<figure id="video' + value + '" class="videocontainer pdf">';
 			     output += '<div>';
 			     output += '<iframe src="https://www.norimaq.com.br/tutormaq/app/pdfview/viewer.html?file=' + object.pdf + '" frameborder="0"></iframe>';
-			     output += '<a class="print" href="javascript:;" onclick="openPrint(' + object.pdf + ')"><i class="fa fa-print fa-2x"></i></a>';
+			     output += '<a class="print" href="https://docs.google.com/viewer?url=' + object.pdf + '"><i class="fa fa-print fa-2x"></i></a>';
 			     output += '<img class="mazoom" src="images/mais-zoom.jpg" onclick="openFull' + value + '()" />';
 			     output += '<img id="mezoom' + value+ '" class="mezoom" src="images/menos-zoom.jpg" onclick="closeFull' + value+ '()" />';
 			     output += '</div>';

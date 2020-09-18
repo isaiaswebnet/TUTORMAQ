@@ -8,7 +8,7 @@
 <link type="text/css" rel="stylesheet" href="css/style.css"/>
 <link type="text/css" rel="stylesheet" href="css/tutormaq.css"/>
 <link type="text/css" rel="stylesheet" href="css/all.min.css"/>
-<link href='//fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'/>
+<link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:30"/>
 <script type="text/javascript" charset="utf-8">
 document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
@@ -18,7 +18,7 @@ function onDeviceReady() {
 
     function buildJsonMod(perPage, idCat){
 
-		var jsonMod = '//www.norimaq.com.br/tutormaq/wp-json/wp/v2/modelo';
+		var jsonMod = 'https://www.norimaq.com.br/tutormaq/wp-json/wp/v2/modelo';
 		
 		if (typeof(perPage) != 'undefined' && perPage != null){
 			jsonMod += '?per_page='+perPage;
@@ -33,7 +33,7 @@ function onDeviceReady() {
 	
 	function buildJsonCat(idCat){
 
-		var jsonCat = '//www.norimaq.com.br/tutormaq/wp-json/wp/v2/modelo_equipamento/' + idCat;
+		var jsonCat = 'https://www.norimaq.com.br/tutormaq/wp-json/wp/v2/modelo_equipamento/' + idCat;
 		
 		return jsonCat;
 	}
@@ -95,7 +95,7 @@ function onDeviceReady() {
 			
 		$.ajax({
             dataType: 'json',
-            url: '//www.norimaq.com.br/tutormaq/wp-json/wp/v2/modelo_equipamento',
+            url: 'https://www.norimaq.com.br/tutormaq/wp-json/wp/v2/modelo_equipamento',
         })
         .done(function(response) {
 
@@ -116,7 +116,7 @@ function onDeviceReady() {
 
         $.ajax({
             dataType: 'json',
-            url: '//www.norimaq.com.br/tutormaq/wp-json/acf/v3/options/configuracoes/',
+            url: 'https://www.norimaq.com.br/tutormaq/wp-json/acf/v3/options/configuracoes/',
         })
         .done(function(response) {
 

@@ -14,14 +14,11 @@
           function onDeviceReady() {
              console.log("onDeviceReady");
              console.log(navigator.notification);
-         }
-         
-         function onOnline() {
              console.log("onOnline");
              setTimeout(function() {
               var ref = window.open('home.html', '_self');
             }, 4000);
-         }
+	  }
          
          function onOffline() {
              console.log("onOffline");

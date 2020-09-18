@@ -12,13 +12,15 @@
 <script type="text/javascript" charset="utf-8">
 document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
-	
-function openPrint(pdf){
-   var ref = window.open('http://docs.google.com/viewer?url=' + pdf + ', '_system', 'location=yes');
- }
     setTimeout(function() {
         $('#preloader').fadeOut('slow');
     }, 5000);
+	
+ 
+	
+function openPrint(pdf){
+   var ref = window.open("https://docs.google.com/viewer?url=" + pdf, "_system", "location=yes");
+ }
 
     function buildJsonMod(idMod) {
 

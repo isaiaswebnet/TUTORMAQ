@@ -33,14 +33,17 @@ function buildJsonMod(idMod) {
         })
         .done(function(response) {
 
-            var output = '';
+            var output = '', pdf = '';
         
            output += '<h2 class="page_title">' + response.title.rendered+ '</h2>';
 		$.each(response.acf,function(index,object){
 			$.each(object,function(value,object){
-				   output += '<figure id="video' + value + '" class="videocontainer pdf">';
+			     if(object.pdf){
+				     pdf = '?file=' + object.pdf;
+			     }
+			     output += '<figure id="video' + value + '" class="videocontainer pdf">';
 			     output += '<div>';
-			     output += '<iframe src="https://www.norimaq.com.br/tutormaq/app/pdfview/viewer.html?file=' + object.pdf + '" frameborder="0"></iframe>';
+			     output += '<iframe src="https://www.norimaq.com.br/tutormaq/app/pdfview/viewer.html' + pdf + '" frameborder="0"></iframe>';
 			     //output += '<iframe src="https://drive.google.com/viewerng/viewer?url=' + object.pdf + '" frameborder="0"></iframe>';
 			     //output += '<iframe src="https://drive.google.com/uc?export=preview&id=' + object.pdf + '/view" frameborder="0"></iframe>';
 			     //output += '<a class="print" href="http://drive.google.com/viewerng/viewer?url=' + object.pdf + '"><i class="fa fa-print fa-2x"></i></a>';
